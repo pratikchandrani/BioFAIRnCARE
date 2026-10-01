@@ -1,0 +1,28 @@
+filters:
+  and:
+    - file.inFolder("Protocols")
+    - 'type == "protocol"'
+views:
+  - type: table
+    name: Active
+    filters:
+      and:
+        - 'status == "active"'
+    order:
+      - file.name
+      - protocol_family
+      - version
+      - biosafety_level
+      - updated
+  - type: table
+    name: All versions
+    order:
+      - file.name
+      - protocol_family
+      - version
+      - status
+      - supersedes
+      - biosafety_level
+    sort:
+      - property: protocol_family
+        direction: ASC

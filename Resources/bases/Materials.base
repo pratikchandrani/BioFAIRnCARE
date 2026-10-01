@@ -1,0 +1,40 @@
+filters:
+  and:
+    - file.inFolder("Materials")
+    - file.name != "_Index"
+views:
+  - type: table
+    name: Materials
+    filters:
+      and:
+        - 'type == "material"'
+    order:
+      - file.name
+      - material_kind
+      - supplier
+      - catalog_no
+      - lot_no
+      - rrid
+      - storage
+      - qc_status
+  - type: table
+    name: Cell lines
+    filters:
+      and:
+        - 'material_kind == "cell_line"'
+    order:
+      - file.name
+      - rrid
+      - str_authenticated_on
+      - mycoplasma_tested_on
+      - passage_at_receipt
+  - type: table
+    name: Instruments
+    filters:
+      and:
+        - 'type == "instrument"'
+    order:
+      - file.name
+      - model
+      - manufacturer
+      - location

@@ -1,0 +1,32 @@
+filters:
+  and:
+    - file.inFolder("Data")
+    - file.name != "_Index"
+views:
+  - type: table
+    name: Data references
+    filters:
+      and:
+        - 'type == "data_ref"'
+    order:
+      - file.name
+      - description
+      - location
+      - persistent_id
+      - format
+      - size
+      - checksum
+      - steward
+      - access_conditions
+  - type: table
+    name: Code references
+    filters:
+      and:
+        - 'type == "code_ref"'
+    order:
+      - file.name
+      - repository
+      - commit
+      - version_tag
+      - entry_point
+      - environment

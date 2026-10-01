@@ -1,0 +1,43 @@
+# Lab-owned files: replaced by every BioFAIRnCARE update package. Everything else is yours.
+# One glob per line, relative to the vault root; ** matches any number of folders.
+Home.md
+README.md
+CHANGELOG.md
+UPGRADE.md
+LICENSE
+.gitignore
+Resources/templates/daily.md
+Resources/templates/commands/**
+Resources/note-templates/experiments/**
+Resources/note-templates/records/**
+Resources/lab_resources/**
+Resources/bases/**
+Resources/tools/**
+**/_Index.md
+MoM/Table of Tags.md
+.obsidian/app.json
+.obsidian/backlink.json
+.obsidian/graph.json
+.obsidian/page-preview.json
+.obsidian/switcher.json
+.obsidian/core-plugins-migration.json
+.obsidian/appearance.json
+.obsidian/core-plugins.json
+.obsidian/community-plugins.json
+.obsidian/daily-notes.json
+.obsidian/hotkeys.json
+.obsidian/types.json
+.obsidian/templates.json
+.obsidian/snippets/**
+.obsidian/plugins/*/manifest.json
+.obsidian/plugins/*/main.js
+.obsidian/plugins/*/styles.css
+.obsidian/plugins/dataview/data.json
+.obsidian/plugins/templater-obsidian/data.json
+.obsidian/plugins/homepage/data.json
+.obsidian/plugins/obsidian-tasks-plugin/data.json
+.obsidian/plugins/obsidian-kanban/data.json
+.obsidian/plugins/obsidian-linter/data.json
+.obsidian/plugins/table-editor-obsidian/data.json
+.obsidian/plugins/obsidian-zotero-desktop-connector/data.json
+_Examples/**

@@ -1,0 +1,47 @@
+{
+  "templater-obsidian:Resources/templates/commands/New experiment.md": [
+    {
+      "modifiers": [
+        "Mod",
+        "Alt"
+      ],
+      "key": "E"
+    }
+  ],
+  "templater-obsidian:Resources/templates/commands/Log to experiment.md": [
+    {
+      "modifiers": [
+        "Mod",
+        "Alt"
+      ],
+      "key": "L"
+    }
+  ],
+  "templater-obsidian:Resources/templates/commands/New record.md": [
+    {
+      "modifiers": [
+        "Mod",
+        "Alt"
+      ],
+      "key": "R"
+    }
+  ],
+  "templater-obsidian:Resources/templates/commands/Request review.md": [
+    {
+      "modifiers": [
+        "Mod",
+        "Alt"
+      ],
+      "key": "V"
+    }
+  ],
+  "templater-obsidian:Resources/templates/commands/Customise template.md": [
+    {
+      "modifiers": [
+        "Mod",
+        "Alt"
+      ],
+      "key": "T"
+    }
+  ]
+}

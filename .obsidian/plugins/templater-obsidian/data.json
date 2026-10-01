@@ -1,0 +1,29 @@
+{
+  "data_version": 2,
+  "command_timeout": 5,
+  "templates_folder": "Resources/templates",
+  "templates_pairs": [],
+  "trigger_on_file_creation_mode": "folder",
+  "auto_jump_to_cursor": false,
+  "jump_to_cursor_after_file_name": false,
+  "shell_path": "",
+  "user_scripts_folder": "",
+  "folder_templates": [],
+  "file_templates": [],
+  "syntax_highlighting": true,
+  "syntax_highlighting_mobile": false,
+  "enabled_templates_hotkeys": [
+    "Resources/templates/commands/New experiment.md",
+    "Resources/templates/commands/Log to experiment.md",
+    "Resources/templates/commands/New record.md",
+    "Resources/templates/commands/Request review.md",
+    "Resources/templates/commands/Customise template.md"
+  ],
+  "startup_templates": [],
+  "intellisense_render": "1",
+  "ignore_folders_on_creation": [
+    "Resources/templates"
+  ],
+  "enable_ribbon_icon": true,
+  "trigger_on_file_creation": true
+}

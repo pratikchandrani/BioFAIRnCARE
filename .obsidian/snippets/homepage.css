@@ -1,0 +1,355 @@
+/* ═══════════════════════════════════════════
+   Lab Homepage — Custom Styling
+   Responsive Cross-Platform (PC & Mobile)
+   ═══════════════════════════════════════════ */
+
+/* ── 1. HIDE METADATA / PROPERTIES PANEL ── */
+.lab-home .metadata-container,
+.lab-home .metadata-properties,
+.lab-home .metadata-file-properties,
+.lab-home .cm-embed-block:has(.metadata-properties),
+.lab-home.markdown-source-view .metadata-container,
+.lab-home.markdown-preview-view .metadata-container {
+  display: none !important;
+}
+
+/* ── 2. HIDE LINE NUMBERS (this note only) ── */
+.lab-home.markdown-source-view .cm-gutters {
+  display: none !important;
+}
+
+/* ── 3. CLEAN UP CALLOUT HEADERS & BORDERS ── */
+.lab-home .callout[data-callout="multi-column"],
+.lab-home .callout[data-callout="blank-container"],
+.lab-home .callout[data-callout*="blank-container"] {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 0 16px 0 !important;
+}
+
+.lab-home .callout[data-callout="multi-column"] > .callout-title,
+.lab-home .callout[data-callout="blank-container"] > .callout-title,
+.lab-home .callout[data-callout*="blank-container"] > .callout-title,
+.lab-home .callout-title {
+  display: none !important;
+}
+
+.lab-home .callout[data-callout="multi-column"] > .callout-content,
+.lab-home .callout[data-callout="blank-container"] > .callout-content {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* ── 4. PAGE LAYOUT & RESPONSIVE PADDING ──
+   Column widths/wrapping for [!multi-column] and wide-2/wide-3 are handled
+   by the vault's "MCL Multi Column" snippet (it relies on .callout-content
+   being display:contents — do not override that here, it breaks the
+   column flex sizing and leaves a big blank gap). Only page-level width
+   and padding are managed in this file. */
+.lab-home.markdown-preview-view .markdown-preview-sizer,
+.lab-home.markdown-preview-view .markdown-preview-sizer > div,
+.lab-home.markdown-source-view .cm-sizer {
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+/* Desktop layout */
+@media (min-width: 769px) {
+  .lab-home.markdown-preview-view {
+    padding-inline: 40px !important;
+    padding-block: 20px !important;
+  }
+}
+
+/* Mobile layout */
+@media (max-width: 768px) {
+  .lab-home.markdown-preview-view,
+  .lab-home.markdown-source-view,
+  .lab-home.markdown-source-view .cm-sizer,
+  .lab-home.markdown-preview-view .markdown-preview-sizer {
+    padding-inline: 10px !important;
+    padding-block: 8px !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+}
+
+/* ── 5. HEADER (LOGO & LIVE CLOCK) ── */
+.lab-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 16px 18px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--background-modifier-border);
+  text-align: center;
+}
+
+.lab-logo {
+  max-height: 220px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  margin-bottom: 12px;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
+}
+
+@media (max-width: 768px) {
+  .lab-logo {
+    max-height: 130px;
+  }
+}
+
+.lab-time {
+  font-size: 1.8rem;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  font-family: var(--font-monospace, monospace);
+  color: var(--text-normal);
+  line-height: 1.1;
+}
+
+.lab-date {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 768px) {
+  .lab-time { font-size: 1.45rem; }
+  .lab-date { font-size: 0.92rem; }
+}
+
+/* ── 6. SECTION HEADINGS ── */
+.lab-home h4 {
+  font-size: 1.05rem !important;
+  font-weight: 600 !important;
+  margin-top: 0 !important;
+  margin-bottom: 12px !important;
+  color: var(--text-normal) !important;
+  border-bottom: 1px solid var(--background-modifier-border);
+  padding-bottom: 6px;
+}
+
+/* ── 7. CALENDAR ── */
+.hp-cal { font-size: 0.85rem; width: 100%; }
+
+.hp-cal-hdr {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.hp-cal-title { font-weight: 600; font-size: 0.95rem; letter-spacing: 0.01em; }
+.hp-nav {
+  background: var(--background-primary);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 6px;
+  color: var(--text-normal);
+  cursor: pointer;
+  padding: 2px 12px;
+  font-size: 1.1rem;
+  line-height: 1.4;
+  transition: background 0.15s ease;
+}
+.hp-nav:hover { background: var(--background-modifier-hover); }
+
+.hp-cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  text-align: center;
+  width: 100%;
+}
+.hp-dh {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-weight: 700;
+  padding: 4px 0 6px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.hp-dc {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 2px;
+  border-radius: 6px;
+  cursor: pointer;
+  min-height: 36px;
+  transition: background 0.15s ease;
+}
+.hp-dc:hover { background: var(--background-modifier-hover); }
+.hp-dn { font-size: 0.84rem; line-height: 1; }
+.hp-today .hp-dn {
+  background: var(--interactive-accent);
+  color: var(--text-on-accent);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+.hp-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--interactive-accent);
+  margin-top: 3px;
+  opacity: 0.85;
+}
+
+/* ── CALENDAR NOTE PANE ── */
+.hp-pane {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--background-modifier-border);
+  font-size: 0.82rem;
+  max-height: 200px;
+  overflow-y: auto;
+}
+.hp-ph { color: var(--text-muted); font-size: 0.74rem; margin-bottom: 6px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+.hp-pr { display: flex; align-items: center; justify-content: space-between; padding: 4px 0; gap: 8px; }
+.hp-pl { color: var(--text-accent); cursor: pointer; text-decoration: none; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.hp-pl:hover { text-decoration: underline; }
+.hp-pt { color: var(--text-muted); font-size: 0.74rem; font-family: var(--font-monospace, monospace); flex-shrink: 0; }
+.hp-pe { color: var(--text-faint); font-style: italic; margin-top: 6px; }
+
+/* ── 8. NAVIGATOR GRID ── */
+.hp-nav-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 8px;
+  margin-top: 4px;
+}
+.hp-nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--background-modifier-border);
+  cursor: pointer;
+  background: var(--background-secondary);
+  font-size: 0.82rem;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  box-sizing: border-box;
+  min-height: 38px;
+}
+.hp-nav-btn:hover {
+  background: var(--background-modifier-hover);
+  border-color: var(--interactive-accent);
+  transform: translateY(-1px);
+}
+.hp-nav-ic { font-size: 1rem; flex-shrink: 0; }
+.hp-nav-lb { color: var(--text-normal); font-weight: 500; overflow: hidden; text-overflow: ellipsis; }
+
+/* ── 9. VAULT STATS ── */
+.hp-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px solid var(--background-modifier-border);
+}
+.hp-stats b { color: var(--text-normal); }
+.hp-stat-badge {
+  background: var(--background-primary);
+  border: 1px solid var(--background-modifier-border);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.hp-stat-badge b { color: var(--text-normal); }
+
+/* ── 10. DATAVIEW TABLES (RECENTLY MODIFIED / CREATED) ── */
+.lab-home table.dataview {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  margin: 0 !important;
+  font-size: 0.84rem !important;
+}
+.lab-home table.dataview th {
+  font-size: 0.75rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  color: var(--text-muted) !important;
+  border-bottom: 1px solid var(--background-modifier-border) !important;
+  padding: 8px 6px !important;
+  text-align: left !important;
+}
+.lab-home table.dataview td {
+  padding: 8px 6px !important;
+  border-bottom: 1px solid var(--background-modifier-border-subtle, rgba(255,255,255,0.05)) !important;
+  white-space: nowrap !important;
+}
+.lab-home table.dataview td:last-child {
+  color: var(--text-muted) !important;
+  font-family: var(--font-monospace, monospace) !important;
+  font-size: 0.78rem !important;
+  text-align: right !important;
+}
+.lab-home table.dataview th:last-child { text-align: right !important; }
+
+/* ── 11. GOOGLE CALENDAR EVENTS ── */
+.gcal-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 20px;
+  font-size: 0.82rem;
+}
+.gcal-grp {
+  flex: 1 1 200px;
+  border-left: 2px solid var(--background-modifier-border);
+  padding-left: 10px;
+}
+.gcal-grp-today { border-left-color: var(--interactive-accent); }
+.gcal-lbl {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-bottom: 5px;
+}
+.gcal-grp-today .gcal-lbl { color: var(--interactive-accent); }
+.gcal-ev {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 3px 0;
+  flex-wrap: wrap;
+}
+.gcal-t {
+  font-size: 0.71rem;
+  font-family: var(--font-monospace, monospace);
+  color: var(--text-muted);
+  min-width: 78px;
+  flex-shrink: 0;
+}
+.gcal-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.gcal-s { color: var(--text-normal); font-weight: 500; }
+.gcal-loc { font-size: 0.7rem; color: var(--text-faint); }
+.gcal-msg { color: var(--text-muted); font-style: italic; font-size: 0.82rem; }

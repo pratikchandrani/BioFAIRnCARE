@@ -1,0 +1,29 @@
+filters:
+  and:
+    - file.inFolder("Samples")
+    - 'type == "sample"'
+views:
+  - type: table
+    name: All samples
+    order:
+      - file.name
+      - sample_type
+      - source_kind
+      - collection_date
+      - storage_location
+      - parent_sample
+      - status
+    sort:
+      - property: collection_date
+        direction: DESC
+  - type: table
+    name: Human-derived (CARE)
+    filters:
+      and:
+        - human_or_community_data == true
+    order:
+      - file.name
+      - ethics_approval
+      - consent_scope
+      - data_steward
+      - sharing_restrictions

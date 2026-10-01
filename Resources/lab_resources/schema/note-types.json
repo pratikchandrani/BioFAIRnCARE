@@ -1,0 +1,1015 @@
+{
+  "schema_version": "1.0.0",
+  "max_attachment_mb": 10,
+  "open_attachment_extensions": [
+    "png",
+    "jpg",
+    "jpeg",
+    "svg",
+    "gif",
+    "webp",
+    "pdf",
+    "csv",
+    "tsv",
+    "txt",
+    "json",
+    "md",
+    "html"
+  ],
+  "raw_extensions_disallowed": [
+    "czi",
+    "lif",
+    "nd2",
+    "fcs",
+    "fastq",
+    "fq",
+    "gz",
+    "bam",
+    "bai",
+    "cram",
+    "sam",
+    "vcf",
+    "raw",
+    "mzml",
+    "d",
+    "h5",
+    "h5ad",
+    "rds",
+    "tif",
+    "tiff"
+  ],
+  "untyped_allowed": [],
+  "id_patterns": {
+    "daily": "^\\d{4}-\\d{2}-\\d{2}$",
+    "prefixed": "^(EXP|PRT|SMP|MAT|INS|DATA|CODE|EVT)-([A-Z]{2,4})-(\\d{8})-(\\d{2})$",
+    "slug": "^[A-Za-z0-9][A-Za-z0-9 _.()-]*$"
+  },
+  "attachment_name_pattern": "^(EXP|PRT|SMP|MAT|INS|DATA|CODE|EVT)-[A-Z]{2,4}-\\d{8}-\\d{2}_[A-Za-z0-9-]+_\\d{8}\\.[A-Za-z0-9]+$",
+  "core_required": [
+    "type",
+    "id",
+    "created",
+    "updated",
+    "status",
+    "owner",
+    "confidentiality",
+    "license",
+    "ai_assisted"
+  ],
+  "date_fields": [
+    "created",
+    "updated",
+    "start_date",
+    "end_date",
+    "signed_off_on",
+    "collection_date",
+    "generated_on",
+    "str_authenticated_on",
+    "mycoplasma_tested_on",
+    "customised_on",
+    "original_date",
+    "date"
+  ],
+  "enums": {
+    "confidentiality": [
+      "internal",
+      "confidential",
+      "embargoed",
+      "public"
+    ],
+    "outcome": [
+      "pending",
+      "success",
+      "partial",
+      "failed",
+      "negative"
+    ],
+    "material_kind": [
+      "cell_line",
+      "antibody",
+      "reagent",
+      "kit",
+      "plasmid",
+      "primer",
+      "organism_strain"
+    ],
+    "source_kind": [
+      "human",
+      "animal",
+      "cell_line",
+      "other"
+    ],
+    "event_type": [
+      "journal_club",
+      "wow",
+      "conference",
+      "talk",
+      "lab_meeting"
+    ],
+    "biosafety_level": [
+      "BSL-1",
+      "BSL-2",
+      "BSL-3"
+    ],
+    "procedures": [
+      "maintenance",
+      "thawing",
+      "passaging",
+      "counting",
+      "freezing"
+    ],
+    "okf_export": [
+      "allowed"
+    ]
+  },
+  "link_property_types": {
+    "projects": "project",
+    "protocols": "protocol",
+    "samples": "sample",
+    "materials": "material",
+    "instruments": "instrument",
+    "data_refs": "data_ref",
+    "code_refs": "code_ref",
+    "parent_sample": "sample",
+    "supersedes": "protocol",
+    "literature": "literature"
+  },
+  "removed_plugin_terms": {
+    "calendar": [
+      "Calendar plugin",
+      "calendar:"
+    ],
+    "omnisearch": [
+      "Omnisearch",
+      "omnisearch"
+    ],
+    "obsidian-pandoc-reference-list": [
+      "Pandoc Reference List",
+      "obsidian-pandoc-reference-list"
+    ],
+    "obsidian-icon-folder": [
+      "Iconize",
+      "Icon Folder",
+      "obsidian-icon-folder"
+    ],
+    "ob-table-enhancer": [
+      "Table Enhancer",
+      "ob-table-enhancer"
+    ],
+    "inline-admonitions": [
+      "Inline Admonitions",
+      "inline-admonitions",
+      "inlineAdmonitions"
+    ],
+    "obsidian-mind-map": [
+      "Mind Map plugin",
+      "obsidian-mind-map"
+    ],
+    "obsidian-local-rest-api": [
+      "Local REST API",
+      "obsidian-local-rest-api"
+    ],
+    "terminal": [
+      "Terminal plugin",
+      "terminal:"
+    ],
+    "x-post-saver": [
+      "X Post Saver",
+      "x-post-saver"
+    ],
+    "obsidian-google-calendar": [
+      "Google Calendar",
+      "obsidian-google-calendar"
+    ]
+  },
+  "removed_plugin_exempt_files": [
+    "CHANGELOG.md",
+    "UPGRADE.md",
+    "Resources/lab_resources/Plugin register.md",
+    "Resources/lab_resources/Feature preservation register.md"
+  ],
+  "groups": {
+    "care": [
+      "ethics_approval",
+      "consent_scope",
+      "permitted_uses",
+      "data_steward",
+      "community_source",
+      "benefit_sharing",
+      "sharing_restrictions"
+    ],
+    "animal": [
+      "iaec_approval",
+      "humane_endpoints",
+      "three_rs",
+      "species_strain",
+      "animal_count"
+    ]
+  },
+  "common_conditional": [
+    {
+      "when": {
+        "ai_assisted": [
+          true
+        ]
+      },
+      "require": [
+        "ai_note"
+      ],
+      "rule": "FM003"
+    },
+    {
+      "when": {
+        "human_or_community_data": [
+          true
+        ]
+      },
+      "require_group": "care",
+      "rule": "CA001"
+    },
+    {
+      "when": {
+        "animal_study": [
+          true
+        ]
+      },
+      "require_group": "animal",
+      "rule": "AN001"
+    },
+    {
+      "when": {
+        "biosafety_level": [
+          "BSL-2",
+          "BSL-3"
+        ]
+      },
+      "require": [
+        "ibsc_approval"
+      ],
+      "rule": "BS001"
+    }
+  ],
+  "types": {
+    "daily": {
+      "id_kind": "daily",
+      "folder": "daily_notes",
+      "status": [
+        "open",
+        "done"
+      ],
+      "required": [],
+      "required_keys": [
+        "projects"
+      ],
+      "conditional": []
+    },
+    "experiment": {
+      "id_kind": "prefixed",
+      "id_prefix": "EXP",
+      "folder": "Experiments",
+      "status": [
+        "planned",
+        "in-progress",
+        "completed",
+        "signed-off",
+        "archived"
+      ],
+      "required": [
+        "experiment_type",
+        "title",
+        "start_date",
+        "outcome",
+        "template_id",
+        "template_version"
+      ],
+      "required_keys": [
+        "projects",
+        "protocols",
+        "samples",
+        "materials",
+        "data_refs",
+        "code_refs",
+        "review_requested",
+        "signed_off_by",
+        "signed_off_on"
+      ],
+      "conditional": [
+        {
+          "when": {
+            "status": [
+              "completed",
+              "signed-off",
+              "archived"
+            ]
+          },
+          "require": [
+            "projects",
+            "end_date"
+          ],
+          "rule": "FM003"
+        },
+        {
+          "when": {
+            "outcome": [
+              "failed",
+              "negative"
+            ]
+          },
+          "require": [
+            "outcome_reason"
+          ],
+          "rule": "FM003"
+        },
+        {
+          "when": {
+            "status": [
+              "signed-off"
+            ]
+          },
+          "require": [
+            "signed_off_by",
+            "signed_off_on"
+          ],
+          "rule": "SO001"
+        },
+        {
+          "when": {
+            "experiment_type": [
+              "E1",
+              "E2"
+            ]
+          },
+          "equals": {
+            "animal_study": true
+          },
+          "rule": "AN001"
+        },
+        {
+          "when": {
+            "experiment_type": [
+              "A1"
+            ]
+          },
+          "equals": {
+            "human_or_community_data": true
+          },
+          "rule": "CA001"
+        },
+        {
+          "when": {
+            "experiment_type": [
+              "A1",
+              "A2",
+              "A3",
+              "B4",
+              "B5",
+              "B6",
+              "E1",
+              "E2"
+            ]
+          },
+          "require": [
+            "biosafety_level"
+          ],
+          "rule": "BS001"
+        }
+      ]
+    },
+    "protocol": {
+      "id_kind": "prefixed",
+      "id_prefix": "PRT",
+      "folder": "Protocols",
+      "status": [
+        "draft",
+        "validated",
+        "active",
+        "superseded",
+        "retired"
+      ],
+      "required": [
+        "protocol_family",
+        "version"
+      ],
+      "required_keys": [
+        "supersedes"
+      ],
+      "conditional": [
+        {
+          "when": {},
+          "require": [
+            "biosafety_level"
+          ],
+          "rule": "BS001"
+        }
+      ]
+    },
+    "sample": {
+      "id_kind": "prefixed",
+      "id_prefix": "SMP",
+      "folder": "Samples",
+      "status": [
+        "active",
+        "archived"
+      ],
+      "required": [
+        "sample_code",
+        "sample_type",
+        "source_kind",
+        "collection_date",
+        "storage_location"
+      ],
+      "required_keys": [
+        "projects",
+        "parent_sample"
+      ],
+      "conditional": [
+        {
+          "when": {
+            "source_kind": [
+              "human"
+            ]
+          },
+          "equals": {
+            "human_or_community_data": true
+          },
+          "rule": "CA002"
+        }
+      ]
+    },
+    "material": {
+      "id_kind": "prefixed",
+      "id_prefix": "MAT",
+      "folder": "Materials",
+      "status": [
+        "active",
+        "archived"
+      ],
+      "required": [
+        "material_kind"
+      ],
+      "required_keys": [
+        "supplier",
+        "catalog_no",
+        "lot_no",
+        "rrid"
+      ],
+      "conditional": []
+    },
+    "instrument": {
+      "id_kind": "prefixed",
+      "id_prefix": "INS",
+      "folder": "Materials",
+      "status": [
+        "active",
+        "archived"
+      ],
+      "required": [
+        "model",
+        "location"
+      ],
+      "required_keys": [],
+      "conditional": []
+    },
+    "data_ref": {
+      "id_kind": "prefixed",
+      "id_prefix": "DATA",
+      "folder": "Data",
+      "status": [
+        "active",
+        "archived"
+      ],
+      "required": [
+        "description"
+      ],
+      "required_keys": [
+        "projects",
+        "persistent_id"
+      ],
+      "conditional": [
+        {
+          "when": {},
+          "require": [
+            "location",
+            "format",
+            "size",
+            "checksum",
+            "steward",
+            "access_conditions"
+          ],
+          "rule": "DR001"
+        }
+      ]
+    },
+    "code_ref": {
+      "id_kind": "prefixed",
+      "id_prefix": "CODE",
+      "folder": "Data",
+      "status": [
+        "active",
+        "archived"
+      ],
+      "required": [],
+      "required_keys": [
+        "projects"
+      ],
+      "conditional": [
+        {
+          "when": {},
+          "require": [
+            "repository",
+            "entry_point"
+          ],
+          "rule": "DR002"
+        },
+        {
+          "when": {},
+          "require_any": [
+            "commit",
+            "version_tag"
+          ],
+          "rule": "DR002"
+        }
+      ]
+    },
+    "project": {
+      "id_kind": "slug",
+      "folder": "Projects/Auto_summary",
+      "status": [
+        "active",
+        "paused",
+        "completed"
+      ],
+      "required": [
+        "project_tag"
+      ],
+      "required_keys": [
+        "members",
+        "pi"
+      ],
+      "conditional": []
+    },
+    "concept": {
+      "id_kind": "slug",
+      "folder": "Concepts",
+      "status": [
+        "active",
+        "archived"
+      ],
+      "required": [],
+      "required_keys": [
+        "search_terms"
+      ],
+      "conditional": []
+    },
+    "literature": {
+      "id_kind": "slug",
+      "folder": "Zotero_PDF_notes",
+      "status": [
+        "unread",
+        "read",
+        "archived"
+      ],
+      "required": [
+        "citekey"
+      ],
+      "required_keys": [
+        "doi"
+      ],
+      "conditional": []
+    },
+    "event": {
+      "id_kind": "prefixed",
+      "id_prefix": "EVT",
+      "folder": "Events",
+      "status": [
+        "planned",
+        "done"
+      ],
+      "required": [
+        "event_type",
+        "date"
+      ],
+      "required_keys": [],
+      "conditional": []
+    },
+    "index": {
+      "id_kind": "slug",
+      "status": [
+        "active",
+        "archived"
+      ],
+      "required": [],
+      "required_keys": [],
+      "conditional": []
+    },
+    "guide": {
+      "id_kind": "slug",
+      "status": [
+        "active",
+        "archived"
+      ],
+      "required": [],
+      "required_keys": [],
+      "conditional": []
+    },
+    "settings": {
+      "id_kind": "slug",
+      "status": [
+        "active",
+        "archived"
+      ],
+      "required": [],
+      "required_keys": [],
+      "conditional": []
+    }
+  },
+  "catalogue": [
+    {
+      "code": "A1",
+      "template_id": "TPL-A1",
+      "name": "Clinical sample collection & biobanking",
+      "category": "A. Biospecimens & materials",
+      "purpose": "Collect, process and bank de-identified patient tissue, blood or body fluids.",
+      "file": "Resources/note-templates/experiments/A1 Clinical sample collection.md",
+      "forced": {
+        "human_or_community_data": true
+      }
+    },
+    {
+      "code": "A2",
+      "template_id": "TPL-A2",
+      "name": "Cell line receipt, authentication & mycoplasma testing",
+      "category": "A. Biospecimens & materials",
+      "purpose": "Register a new cell line and confirm identity (STR) and mycoplasma status before use.",
+      "file": "Resources/note-templates/experiments/A2 Cell line authentication.md",
+      "forced": {}
+    },
+    {
+      "code": "A3",
+      "template_id": "TPL-A3",
+      "name": "Cell culture maintenance, passaging & cryopreservation",
+      "category": "A. Biospecimens & materials",
+      "purpose": "Routine culture, passaging and freezing of a cell line.",
+      "file": "Resources/note-templates/experiments/A3 Cell culture maintenance.md",
+      "forced": {}
+    },
+    {
+      "code": "B1",
+      "template_id": "TPL-B1",
+      "name": "DNA / RNA extraction & QC",
+      "category": "B. Nucleic acids",
+      "purpose": "Extract nucleic acids and record yield, purity and integrity.",
+      "file": "Resources/note-templates/experiments/B1 DNA RNA extraction.md",
+      "forced": {}
+    },
+    {
+      "code": "B2",
+      "template_id": "TPL-B2",
+      "name": "Conventional PCR & agarose gel electrophoresis",
+      "category": "B. Nucleic acids",
+      "purpose": "Amplify a target and check the product on an agarose gel.",
+      "file": "Resources/note-templates/experiments/B2 PCR and gel.md",
+      "forced": {}
+    },
+    {
+      "code": "B3",
+      "template_id": "TPL-B3",
+      "name": "cDNA synthesis & RT-qPCR",
+      "category": "B. Nucleic acids",
+      "purpose": "Measure gene expression by reverse transcription and quantitative PCR (MIQE-aligned).",
+      "file": "Resources/note-templates/experiments/B3 RT-qPCR.md",
+      "forced": {}
+    },
+    {
+      "code": "B4",
+      "template_id": "TPL-B4",
+      "name": "Gene cloning",
+      "category": "B. Nucleic acids",
+      "purpose": "Clone an insert into a vector and verify the construct.",
+      "file": "Resources/note-templates/experiments/B4 Gene cloning.md",
+      "forced": {}
+    },
+    {
+      "code": "B5",
+      "template_id": "TPL-B5",
+      "name": "Plasmid preparation & transfection / viral transduction",
+      "category": "B. Nucleic acids",
+      "purpose": "Prepare plasmid DNA and deliver it (or virus) into cells.",
+      "file": "Resources/note-templates/experiments/B5 Plasmid prep and transfection.md",
+      "forced": {}
+    },
+    {
+      "code": "B6",
+      "template_id": "TPL-B6",
+      "name": "Gene knockdown / knockout (siRNA, shRNA, CRISPR)",
+      "category": "B. Nucleic acids",
+      "purpose": "Reduce or remove a gene's expression and validate the effect.",
+      "file": "Resources/note-templates/experiments/B6 Knockdown knockout.md",
+      "forced": {}
+    },
+    {
+      "code": "B7",
+      "template_id": "TPL-B7",
+      "name": "Chromatin immunoprecipitation (ChIP / ChIP-qPCR)",
+      "category": "B. Nucleic acids",
+      "purpose": "Map protein–DNA interactions at chosen loci by immunoprecipitating crosslinked chromatin.",
+      "file": "Resources/note-templates/experiments/B7 ChIP.md",
+      "forced": {}
+    },
+    {
+      "code": "B8",
+      "template_id": "TPL-B8",
+      "name": "Agarose gel electrophoresis",
+      "category": "B. Nucleic acids",
+      "purpose": "Separate and document nucleic acids on an agarose gel (stand-alone or after PCR, digests, ChIP).",
+      "file": "Resources/note-templates/experiments/B8 Agarose gel.md",
+      "forced": {}
+    },
+    {
+      "code": "C1",
+      "template_id": "TPL-C1",
+      "name": "Protein extraction & quantification",
+      "category": "C. Proteins",
+      "purpose": "Lyse cells or tissue and quantify protein.",
+      "file": "Resources/note-templates/experiments/C1 Protein extraction.md",
+      "forced": {}
+    },
+    {
+      "code": "C2",
+      "template_id": "TPL-C2",
+      "name": "Western blot",
+      "category": "C. Proteins",
+      "purpose": "Detect and compare proteins by SDS-PAGE and immunoblotting.",
+      "file": "Resources/note-templates/experiments/C2 Western blot.md",
+      "forced": {}
+    },
+    {
+      "code": "C3",
+      "template_id": "TPL-C3",
+      "name": "Immunoprecipitation / Co-IP",
+      "category": "C. Proteins",
+      "purpose": "Pull down a protein (and its partners) with an antibody.",
+      "file": "Resources/note-templates/experiments/C3 Immunoprecipitation.md",
+      "forced": {}
+    },
+    {
+      "code": "C4",
+      "template_id": "TPL-C4",
+      "name": "ELISA",
+      "category": "C. Proteins",
+      "purpose": "Quantify an analyte with an enzyme-linked immunosorbent assay.",
+      "file": "Resources/note-templates/experiments/C4 ELISA.md",
+      "forced": {}
+    },
+    {
+      "code": "C5",
+      "template_id": "TPL-C5",
+      "name": "Immunofluorescence / immunocytochemistry / immunohistochemistry",
+      "category": "C. Proteins",
+      "purpose": "Localise proteins in cells or tissue sections.",
+      "file": "Resources/note-templates/experiments/C5 Immunostaining IF IHC.md",
+      "forced": {}
+    },
+    {
+      "code": "C6",
+      "template_id": "TPL-C6",
+      "name": "SDS-PAGE & total-protein staining",
+      "category": "C. Proteins",
+      "purpose": "Separate proteins by SDS-PAGE and stain the gel (Coomassie / silver) without blotting.",
+      "file": "Resources/note-templates/experiments/C6 SDS-PAGE and staining.md",
+      "forced": {}
+    },
+    {
+      "code": "C7",
+      "template_id": "TPL-C7",
+      "name": "Electrophoretic mobility shift assay (EMSA)",
+      "category": "C. Proteins",
+      "purpose": "Detect protein–nucleic acid binding as a shift of a labelled probe on a native gel.",
+      "file": "Resources/note-templates/experiments/C7 EMSA.md",
+      "forced": {}
+    },
+    {
+      "code": "D1",
+      "template_id": "TPL-D1",
+      "name": "Cell proliferation / growth curve",
+      "category": "D. Cell-based assays",
+      "purpose": "Measure growth over time.",
+      "file": "Resources/note-templates/experiments/D1 Cell proliferation.md",
+      "forced": {}
+    },
+    {
+      "code": "D2",
+      "template_id": "TPL-D2",
+      "name": "Drug treatment & cytotoxicity (MTT / MTS / resazurin)",
+      "category": "D. Cell-based assays",
+      "purpose": "Determine dose-response and IC50 of a compound.",
+      "file": "Resources/note-templates/experiments/D2 Drug cytotoxicity MTT.md",
+      "forced": {}
+    },
+    {
+      "code": "D3",
+      "template_id": "TPL-D3",
+      "name": "Colony formation (clonogenic) assay",
+      "category": "D. Cell-based assays",
+      "purpose": "Assess long-term survival after treatment.",
+      "file": "Resources/note-templates/experiments/D3 Colony formation.md",
+      "forced": {}
+    },
+    {
+      "code": "D4",
+      "template_id": "TPL-D4",
+      "name": "Migration & invasion (wound healing / transwell)",
+      "category": "D. Cell-based assays",
+      "purpose": "Measure cell migration or invasion.",
+      "file": "Resources/note-templates/experiments/D4 Migration invasion.md",
+      "forced": {}
+    },
+    {
+      "code": "D5",
+      "template_id": "TPL-D5",
+      "name": "Flow cytometry (apoptosis, cell cycle, markers)",
+      "category": "D. Cell-based assays",
+      "purpose": "Analyse cells by flow cytometry.",
+      "file": "Resources/note-templates/experiments/D5 Flow cytometry.md",
+      "forced": {}
+    },
+    {
+      "code": "E1",
+      "template_id": "TPL-E1",
+      "name": "Xenograft tumour formation (CDX / PDX)",
+      "category": "E. In vivo",
+      "purpose": "Test tumour formation from implanted cells or patient tissue.",
+      "file": "Resources/note-templates/experiments/E1 Xenograft tumour formation.md",
+      "forced": {
+        "animal_study": true
+      }
+    },
+    {
+      "code": "E2",
+      "template_id": "TPL-E2",
+      "name": "Xenograft drug sensitivity / efficacy",
+      "category": "E. In vivo",
+      "purpose": "Test a treatment's effect on established xenografts (ARRIVE-aligned).",
+      "file": "Resources/note-templates/experiments/E2 Xenograft drug efficacy.md",
+      "forced": {
+        "animal_study": true
+      }
+    },
+    {
+      "code": "F1",
+      "template_id": "TPL-F1",
+      "name": "Whole exome sequencing",
+      "category": "F. Omics",
+      "purpose": "From sample to variant calls.",
+      "file": "Resources/note-templates/experiments/F1 Whole exome sequencing.md",
+      "forced": {}
+    },
+    {
+      "code": "F2",
+      "template_id": "TPL-F2",
+      "name": "Transcriptome / RNA-seq",
+      "category": "F. Omics",
+      "purpose": "Bulk or single-cell transcriptome profiling.",
+      "file": "Resources/note-templates/experiments/F2 Transcriptome RNA-seq.md",
+      "forced": {}
+    },
+    {
+      "code": "F3",
+      "template_id": "TPL-F3",
+      "name": "Microbiome (16S rRNA amplicon / shotgun metagenomics)",
+      "category": "F. Omics",
+      "purpose": "Profile microbial communities (MIxS-aligned).",
+      "file": "Resources/note-templates/experiments/F3 Microbiome.md",
+      "forced": {}
+    },
+    {
+      "code": "G1",
+      "template_id": "TPL-G1",
+      "name": "Protein structure modelling, docking & molecular dynamics",
+      "category": "G. Computational",
+      "purpose": "Model a protein, dock ligands or run MD simulations.",
+      "file": "Resources/note-templates/experiments/G1 Protein modelling and MD.md",
+      "forced": {}
+    },
+    {
+      "code": "G2",
+      "template_id": "TPL-G2",
+      "name": "Machine-learning model training & evaluation",
+      "category": "G. Computational",
+      "purpose": "Train and evaluate a predictive model reproducibly.",
+      "file": "Resources/note-templates/experiments/G2 ML model training.md",
+      "forced": {}
+    },
+    {
+      "code": "G3",
+      "template_id": "TPL-G3",
+      "name": "Exploratory data analysis (Jupyter / R Markdown / Quarto)",
+      "category": "G. Computational",
+      "purpose": "Explore a dataset in a notebook and record what was learned.",
+      "file": "Resources/note-templates/experiments/G3 Exploratory data analysis.md",
+      "forced": {}
+    },
+    {
+      "code": "Z1",
+      "template_id": "TPL-Z1",
+      "name": "Generic experiment",
+      "category": "Z. Fallback",
+      "purpose": "Any experiment not covered by a specific template (still fully FAIR).",
+      "file": "Resources/note-templates/experiments/Z1 Generic experiment.md",
+      "forced": {}
+    }
+  ],
+  "okf": {
+    "version": "0.2",
+    "recommended": [
+      "title",
+      "description",
+      "tags"
+    ],
+    "status_map": {
+      "experiment": {
+        "planned": "draft",
+        "in-progress": "draft",
+        "completed": "stable",
+        "signed-off": "stable",
+        "archived": "deprecated"
+      },
+      "protocol": {
+        "draft": "draft",
+        "validated": "stable",
+        "active": "stable",
+        "superseded": "deprecated",
+        "retired": "deprecated"
+      },
+      "daily": {
+        "open": "draft",
+        "done": "stable"
+      },
+      "event": {
+        "planned": "draft",
+        "done": "stable"
+      },
+      "project": {
+        "active": "stable",
+        "paused": "stable",
+        "completed": "stable"
+      },
+      "literature": {
+        "unread": "stable",
+        "read": "stable",
+        "archived": "deprecated"
+      },
+      "sample": {
+        "active": "stable",
+        "archived": "deprecated"
+      },
+      "material": {
+        "active": "stable",
+        "archived": "deprecated"
+      },
+      "instrument": {
+        "active": "stable",
+        "archived": "deprecated"
+      },
+      "data_ref": {
+        "active": "stable",
+        "archived": "deprecated"
+      },
+      "code_ref": {
+        "active": "stable",
+        "archived": "deprecated"
+      },
+      "concept": {
+        "active": "stable",
+        "archived": "deprecated"
+      },
+      "index": {
+        "active": "stable",
+        "archived": "deprecated"
+      },
+      "guide": {
+        "active": "stable",
+        "archived": "deprecated"
+      },
+      "settings": {
+        "active": "stable",
+        "archived": "deprecated"
+      }
+    },
+    "exempt_prefixes": [
+      "Resources/templates/",
+      "Resources/note-templates/",
+      "Resources/tools/"
+    ],
+    "reserved_names": [
+      "index.md",
+      "log.md"
+    ],
+    "description_max": 200,
+    "finished_experiment_statuses": [
+      "completed",
+      "signed-off"
+    ]
+  },
+  "edition": "standard"
+}
